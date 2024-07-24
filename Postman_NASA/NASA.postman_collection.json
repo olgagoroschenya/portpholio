@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "f902e103-b5d6-4285-8c1b-18536d6fec41",
+		"name": "NASA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33792135",
+		"_collection_link": "https://grey-robot-952575.postman.co/workspace/New-Team-Workspace~0f34434d-5a74-4638-8d58-6490ff5bf29b/collection/33792135-f902e103-b5d6-4285-8c1b-18536d6fec41?action=share&source=collection_link&creator=33792135"
+	},
+	"item": [
+		{
+			"name": "Curiosity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData=pm.response.json();\r",
+							"pm.environment.set(\"second_photo_curiosity_id\", jsonData.photos[1].id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2022-1-21",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nasa",
+						"gov"
+					],
+					"path": [
+						"mars-photos",
+						"api",
+						"v1",
+						"rovers",
+						"curiosity",
+						"photos"
+					],
+					"query": [
+						{
+							"key": "earth_date",
+							"value": "2022-1-21"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Spirit",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData=pm.response.json();\r",
+							"pm.environment.set(\"second_photo_spirit_id\", jsonData.photos[1].id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nasa.gov/mars-photos/api/v1/rovers/spirit/photos?earth_date=2010-1-21",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nasa",
+						"gov"
+					],
+					"path": [
+						"mars-photos",
+						"api",
+						"v1",
+						"rovers",
+						"spirit",
+						"photos"
+					],
+					"query": [
+						{
+							"key": "earth_date",
+							"value": "2010-1-21"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Opportunity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData=pm.response.json();\r",
+							"\r",
+							"pm.environment.set(\"second_photo_opportunity_id\",jsonData.photos[1].id);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?earth_date=2009-6-3",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nasa",
+						"gov"
+					],
+					"path": [
+						"mars-photos",
+						"api",
+						"v1",
+						"rovers",
+						"opportunity",
+						"photos"
+					],
+					"query": [
+						{
+							"key": "earth_date",
+							"value": "2009-6-3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "camera_name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = pm.response.json();\r",
+							"console.log(jsonData);\r",
+							"camera_name = jsonData.photos[0].camera.name;\r",
+							"console.log(camera_name);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?earth_date=2009-6-4",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nasa",
+						"gov"
+					],
+					"path": [
+						"mars-photos",
+						"api",
+						"v1",
+						"rovers",
+						"opportunity",
+						"photos"
+					],
+					"query": [
+						{
+							"key": "earth_date",
+							"value": "2009-6-4"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "NqdTBu5vlVaxhvVnzZKIchewTlmonEJygeKVdIQn",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "api_key",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.environment.get(\"variable_key\");"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.environment.get(\"variable_key\");"
+				]
+			}
+		}
+	]
+}
