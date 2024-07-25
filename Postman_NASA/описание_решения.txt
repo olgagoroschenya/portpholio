@@ -2,4 +2,11 @@ open api NASA - https://api.nasa.gov/
 Необходимо найти запросы Mars Rover Photos 
 Выполнить запрос по Querying by Earth date на дату 21.01.2022 
 Передать в переменную окружения id второй фотографии, распарсив json 
-Что делала
+Решение:
+1. Зарегистрировалась на сайте https://api.nasa.gov/ для получения ключа API.
+2. На сайте перешла в раздел Browse APIs в Mars Rover Photos.
+3. В Querying by Earth date есть Example query, его беру для отправки запросов в Postman.
+4. В Postman создаю коллекцию NASA, в коллекции в Authorization выбираю Auth Type-API Key, в Value ввожу значение полученного ключа API, в Add to выбираю Query Params (в соответствии с условиями задания).
+5. В коллекцию NASA добавляю запрос: Add request, GET-запрос, ввод URL в строку запроса Example query (удалила api key=DEMO_KEY), в Query Params earth_date (в соответствии с условиями задания) 21.01.2022, далее нажимаю Save и Send.
+6. По условиям задания необходимо передать в переменную окружения id второй фотографии, распарсив json, для этого: в Scrpipts выбираю из сниппетов Set an environment variable, в "variable_key" указываю "second_photo_curiosity_id", а в "variable_value" указываю jsonData.photos[1].id; нажимаю Send. В Environment отображается Variable значение second_photo_curiosity_id, в сurrent value id второй фотографии.
+7. Так как на сайте есть фотогрфии с нескольких марсоходов (Curiosity, Opportunity и Spirit), выполняю запросы для каждого из них: для этого в URL изменяю наименования этих марсоходов и при необходимости изменяю earth_date, тк кроме Curiosity, остальные марсоходы не делали фото 21.01.2022. Также для каждого передаю в переменную окружения id второй фотографии, распарсив json.
