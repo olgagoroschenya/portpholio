@@ -38,15 +38,17 @@ values (1, 1, 1, 40000.00),
  Название проекта;
  Название должности;
  Средняя заработная плата.
-2) Вывести всех работников, которые работают сразу на нескольких проектах.
-Ответ должен содержать следующие столбцы:
- Имя и фамилия сотрудника;
- Название должности.
+
 SELECT project_name as Проект, titel_name as Должность, round(avg(salary), 2) as Средняя_зп from projects pr
 join positions po on pr.project_id=po.project_id
 join titles ti on po.title_id=ti.id
 where titel_name='tester' and project_name='ПУМЧД'
 GROUP by project_name, titel_name;
+
+2) Вывести всех работников, которые работают сразу на нескольких проектах.
+Ответ должен содержать следующие столбцы:
+ Имя и фамилия сотрудника;
+ Название должности.
 select concat(first_name, ' ', last_name) as Имя_Фамилия_сотрудника, titel_name as Должность from employee e
 join positions po on e.employee_id=po.employee_id
 join titles ti on po.title_id=ti.id
