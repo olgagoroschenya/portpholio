@@ -27,7 +27,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"username\":\"qa@qa.qa\",\r\n\"password\":\"111\"}",
+					"raw": "{\"username\":\",,,\",\r\n\"password\":\",,,\"}",
 					"options": {
 						"raw": {
 							"language": "json"
